@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Nos Services</h1>
+
+  <div class="row">
+    {% for service in services %}
+      <div class="col-md-4 text-center mb-4">
+        <img src="{{ asset('images/services/' ~ service.image) }}" alt="{{ service.nom }}" class="img-fluid rounded shadow" style="height: 200px; object-fit: cover;">
+        <h5 class="mt-2">{{ service.nom }}</h5>
+        <p class="text-muted">{{ service.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
