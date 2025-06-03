@@ -4,15 +4,46 @@
 
 {% block body %}
 
-<div class="container py-4">
-  <div class="row justify-content-center">
-    {% for service in services %}
-      <div class="col-md-3 text-center mb-4">
-        <img src="{{ asset('images/services/' ~ service.image) }}" class="img-fluid rounded" style="height: 160px; object-fit: cover;">
-        <p class="fw-bold mt-2">{{ service.nom }}</p>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Bienvenue sur notre site</h1>
+  <p class="text-center">Découvrez nos services et contactez-nous pour plus d'informations.</p>
+  {% set slides = [
+  {'image': 'slide1.jpg', 'texte': 'Chantier de rénovation complète'},
+  {'image': 'slide2.jpg', 'texte': 'Installation de salle de bain moderne'},
+  {'image': 'slide3.jpg', 'texte': 'Travaux de terrassement extérieur'}
+] %}
+
+
+
+<div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for i in 0..(slides|length - 1) %}
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ i }}"
+        {% if i == 0 %}class="active" aria-current="true"{% endif %}
+        aria-label="Slide {{ i + 1 }}"></button>
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner">
+    {% for slide in slides %}
+      <div class="carousel-item {% if loop.first %}active{% endif %}">
+        <img src="{{ asset('images/services/' ~ slide.image) }}" class="d-block w-100" alt="Image {{ loop.index }}" style="max-height: 400px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded mt-3">
+          <p class="mb-0">{{ slide.texte }}</p>
+        </div>
       </div>
     {% endfor %}
   </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Précédent</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Suivant</span>
+  </button>
 </div>
 
 {% endblock %}
