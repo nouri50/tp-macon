@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ service.nom }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>{{ service.nom }}</h2>
+   <img src="{{ asset('images/services/' ~ service.image) }}" class="img-fluid w-50 my-4" alt="{{ service.nom }}">
+
+    <p>{{ service.description }}</p>
+
+   <a href="{{ path('app_service') }}" class="btn btn-secondary mt-3">← Retour</a>
+
+</div>
+{% endblock %}

@@ -36,6 +36,14 @@ class ServiceFixture extends Fixture
                 'description' => 'Création ou rénovation de terrasse en béton, pierre ou carrelage. Un extérieur agréable et résistant aux intempéries.',
                 'image' => 'terrasse.jpg',
             ],
+
+            [
+                'nom' => 'Extension maison',
+                'description' => 'Agrandissement de votre habitation avec des extensions sur-mesure. Optimisation de l’espace de vie.',
+                'image' => 'extension.jpg'
+            ],
+
+
         ];
 
         foreach ($services as $data) {

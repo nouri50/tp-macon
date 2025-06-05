@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Service{% endblock %}
+{% block title %}Nos services{% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-  <h1 class="text-center mb-4">Nos Services</h1>
+<div class="row">
+  {% for service in services %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="{{ asset('images/services/' ~ service.image) }}" class="card-img-top" alt="{{ service.nom }}" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title">{{ service.nom }}</h5>
+          <p class="card-text">{{ service.description|slice(0, 100) ~ '...' }}</p>
 
-  <div class="row">
-    {% for service in services %}
-      <div class="col-md-4 text-center mb-4">
-        <img src="{{ asset('images/services/' ~ service.image) }}" alt="{{ service.nom }}" class="img-fluid rounded shadow" style="height: 200px; object-fit: cover;">
-        <h5 class="mt-2">{{ service.nom }}</h5>
-        <p class="text-muted">{{ service.description }}</p>
+          <a href="{{ path('app_service_show', {'id': service.id}) }}" class="btn btn-primary">Voir plus</a>
+
+          {% if isAdmin %}
+            <a href="{{ path('app_service_edit', {'id': service.id}) }}" class="btn btn-warning ms-2">Modifier</a>
+          {% endif %}
+        </div>
       </div>
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 </div>
+
 {% endblock %}
+
