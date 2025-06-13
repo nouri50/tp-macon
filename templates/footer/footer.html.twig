@@ -1,0 +1,15 @@
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+        <p>&copy; {{ "now"|date("Y") }} MonSite. Tous droits réservés.</p>
+
+        <nav>
+            <a href="{{ path('app_home') }}" class="text-white me-3">Accueil</a>
+            <a href="{{ path('app_service') }}" class="text-white me-3">Services</a>
+            <a href="{{ path('app_contact') }}" class="text-white me-3">Contact</a>
+
+            {% if not app.user %}
+                <a href="{{ path('app_login') }}" class="text-warning fw-bold">Espace Administration</a>
+            {% endif %}
+        </nav>
+    </div>
+</footer>
